@@ -13,8 +13,9 @@ jobs:
       - image: circleci/postgres:13.2
         environment:
           POSTGRES_USER: admin
-          POSTGRES_DB: mofmof
-    working_directory: ~/repo
+          POSTGRES_HOST_AUTH_METHOD: trust
+          POSTGRES_DB: taskatta_test
+    working_directory: ~/taskatta
     steps:
       - checkout
       - restore_cache:
