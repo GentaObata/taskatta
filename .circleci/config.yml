@@ -13,7 +13,6 @@ jobs:
       - image: circleci/postgres:13.2
         environment:
           POSTGRES_USER: admin
-          POSTGRES_HOST_AUTH_METHOD: trust
           POSTGRES_DB: taskatta_test
     working_directory: ~/taskatta
     steps:
