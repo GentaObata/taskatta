@@ -8,9 +8,27 @@ class TasksController < ApplicationController
   end
 
   def new
+    @task = Task.new
+  end
+
+  def create
+    @task = Task.new(task_params)
+    if @task.save
+      redirect_to root_url
+    else
+      render 'new'
+    end
   end
 
   def edit
+  end
+
+  def update
+    if @task.update(task_params)
+      redirect_to root_url
+    else
+      render 'show'
+    end
   end
 
   private
