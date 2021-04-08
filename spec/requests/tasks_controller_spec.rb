@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "TasksControllers", type: :request do
-  describe 'タスク一覧画面の表示' do
+  describe 'タスク一覧画面を表示したとき' do
     before do
       FactoryBot.create :task
       get root_path
@@ -14,7 +14,7 @@ RSpec.describe "TasksControllers", type: :request do
     end
   end
 
-  describe '新規タスクの登録' do
+  describe '新規タスクを登録したとき' do
     let(:params) { { task: {title: title, body: 'task body'} } }
     subject { post tasks_path, params: params }
     context 'タイトルが空の場合' do
@@ -33,6 +33,22 @@ RSpec.describe "TasksControllers", type: :request do
         subject
         expect(flash[:success]).to be_present
       end
+    end
+  end
+
+  describe 'タスクの編集したとき' do
+    before do
+      @task = FactoryBot.create :task
+    end
+    let(:params) { { task: {title: 'task title', body: 'task body'} } }
+    it '変更内容が反映されること' do
+      patch task_path(@task), params: params
+      # patch :update, params: { id: @task.id, task: {title: 'task title', body: 'task body'} }
+      expect(@task.reload.title).to eq "task title"
+    end
+    it 'flashメッセージが表示されること' do
+      patch task_path(@task), params: params
+      expect(flash[:success]).to be_present
     end
   end
 end

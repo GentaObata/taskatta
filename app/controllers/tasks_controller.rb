@@ -25,7 +25,9 @@ class TasksController < ApplicationController
   end
 
   def update
+    @task = Task.find(params[:id])
     if @task.update(task_params)
+      flash[:success] = 'タスクを変更しました。'
       redirect_to root_url
     else
       render 'show'
