@@ -14,6 +14,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
+      flash[:success] = '新規タスクを追加しました。'
       redirect_to root_url
     else
       render 'new'

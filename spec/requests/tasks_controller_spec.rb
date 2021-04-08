@@ -29,6 +29,10 @@ RSpec.describe "TasksControllers", type: :request do
       it 'タスクが一つ増えること' do
         expect { subject }.to change(Task, :count).by(1)
       end
+      it 'flashメッセージが表示されること' do
+        subject
+        expect(flash[:success]).to be_present
+      end
     end
   end
 end
