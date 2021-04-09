@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+
   def index
     @tasks = Task.all
   end
@@ -36,9 +37,13 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    Task.find(params[:id]).destroy
-    flash[:success] = 'タスクを削除しました。'
-    redirect_to root_url
+    if Task.find(params[:id]).destroy
+      flash[:success] = 'タスクを削除しました。'
+      redirect_to root_url
+    else
+      flash[:danger] = 'タスクの削除に失敗しました'
+      render 'show'
+    end
   end
 
   private
