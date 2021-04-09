@@ -3,3 +3,4 @@
 <h1>タスク詳細</h1>
 
 <%= render 'form' %>
+<%= button_to "タスク削除", task_path(@task), method: :delete, data: { confirm: "本当に削除しますか" }, class: "btn btn-seocndry" %>
