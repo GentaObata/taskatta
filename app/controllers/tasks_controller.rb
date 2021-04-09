@@ -17,6 +17,7 @@ class TasksController < ApplicationController
       flash[:success] = '新規タスクを追加しました。'
       redirect_to root_url
     else
+      flash[:danger] = 'タスクの作成に失敗しました'
       render 'new'
     end
   end
