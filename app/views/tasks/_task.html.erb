@@ -1,5 +1,5 @@
 <li>
   <p class="task_title"><%= link_to task.title, task%></p>
   <p class="task_body"><%= task.body%></p>
-  <p><%= task.created_at%></p>
+  <p><%= task.created_at.strftime('%Y/%m/%d %H:%M')%></p>
 </li>
