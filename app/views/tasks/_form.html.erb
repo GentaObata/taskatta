@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <%= render 'shared/error_messages' %>
+
+      <%= form_with(model: @task, local: true) do |f| %>
+        <%= f.label :title, "タスク名" %>
+        <%= f.text_field :title, class: 'form-controll' %>
+
+        <%= f.label :body, "タスク内容" %>
+        <%= f.text_area :body, class: 'form-controll'  %>
+
+        <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
