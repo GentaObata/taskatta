@@ -14,6 +14,7 @@ jobs:
         environment:
           POSTGRES_USER: admin
           POSTGRES_DB: taskatta_test
+          -e POSTGRES_PASSWORD=password"
     working_directory: ~/taskatta
     steps:
       - checkout
@@ -43,6 +44,7 @@ jobs:
         environment:
           POSTGRES_USER: admin
           POSTGRES_DB: taskatta_test
+          POSTGRES_PASSWORD: mofmof41
     working_directory: ~/taskatta
     steps:
       - checkout
