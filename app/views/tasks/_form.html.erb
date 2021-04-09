@@ -4,10 +4,10 @@
       <%= render 'shared/error_messages' %>
 
       <%= form_with(model: @task, local: true) do |f| %>
-        <%= f.label :title, "タスク名" %>
+        <%= f.label :title %>
         <%= f.text_field :title, class: 'form-controll' %>
 
-        <%= f.label :body, "タスク内容" %>
+        <%= f.label :body %>
         <%= f.text_area :body, class: 'form-controll'  %>
 
         <%= f.submit yield(:button_text), class: "btn btn-primary" %>
