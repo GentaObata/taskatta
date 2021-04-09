@@ -14,6 +14,7 @@ jobs:
         environment:
           POSTGRES_USER: admin
           POSTGRES_DB: taskatta_test
+          POSTGRES_PASSWORD: mofmof41
     working_directory: ~/taskatta
     steps:
       - checkout
@@ -33,8 +34,44 @@ jobs:
           name: Rubocop
           command: bundle exec rubocop --fail-level W --display-only-fail-level-offense
 
+  rspec:
+    docker:
+      - image: circleci/ruby:3.0.1-node-browsers-legacy
+        environment:
+          RAILS_ENV: test
+          POSTGRES_HOST: 127.0.0.1
+      - image: circleci/postgres:13.2
+        environment:
+          POSTGRES_USER: admin
+          POSTGRES_DB: taskatta_test
+          POSTGRES_PASSWORD: mofmof41
+    working_directory: ~/taskatta
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - run: yarn install
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+      - run: bundle exec rails db:create
+      - run: bundle exec rails db:schema:load
+      # Rspec
+      - run:
+          name: Rspec
+          command: bundle exec rspec
+
+
 workflows:
   version: 2
   rubocop:
     jobs:
       - rubocop
+      - rspec:
+          requires:
+            - rubocop
