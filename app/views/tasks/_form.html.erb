@@ -4,11 +4,14 @@
       <%= render 'shared/error_messages' %>
 
       <%= form_with(model: @task, local: true) do |f| %>
-        <%= f.label :title %>
+        <%= f.label :title, class: 'form_control' %>
         <%= f.text_field :title, class: 'form-controll' %>
 
-        <%= f.label :body %>
+        <%= f.label :body, class: 'form_control' %>
         <%= f.text_area :body, class: 'form-controll'  %>
+
+        <%= f.label :due_time, class: 'form_control' %>
+        <%= f.datetime_field :due_time, class: 'form_control' %>
 
         <%= f.submit yield(:button_text), class: "btn btn-primary" %>
       <% end %>
