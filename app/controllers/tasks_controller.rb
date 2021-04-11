@@ -2,7 +2,7 @@ class TasksController < ApplicationController
 
   def index
     if params[:sort] == 'due_time'
-      @tasks = Task.all.order(due_time: 'DESC')
+      @tasks = Task.all.order('due_time DESC NULLS LAST')
     else
       @tasks = Task.all.order(created_at: 'DESC')
     end
