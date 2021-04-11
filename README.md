@@ -26,7 +26,7 @@
 - `heroku login`(アカウントIDとパスワードは別途聞いてください)
 - `git push heroku master`
 - `heroku run rails db:migrate:reset`(初回及びmigrateファイルをいじったときのみ)
-- `heroku run rails db:seed`((初回及びseedsdファイルをいじったときのみ))
+- `heroku run rails db:seed`(初回及びseedsdファイルをいじったときのみ)
 
 
 
