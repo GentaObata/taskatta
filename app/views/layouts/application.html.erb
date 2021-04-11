@@ -11,8 +11,6 @@
     <% flash.each do |message_type, message| %>
       <%= content_tag(:div, message, clsss: "alert alert-#{message_type}") %>
     <% end %>
-    <div class="container">
-      <%= yield %>
-    </div>
+    <%= yield %>
   </body>
 </html>
