@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :task do
-    title { 'puipui' }
+    sequence(:title) { |n| "task-#{n}" }
     body { 'pui~' }
   end
 end
