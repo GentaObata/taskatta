@@ -27,6 +27,7 @@
 <script>
   $(function() {
     $("select#sort").val(getParam('sort'))
+    $("input#search").val(getParam('search'))
 
     $('select#sort').change(function() {
       window.location.href = '/?sort=' + $(this).val()
