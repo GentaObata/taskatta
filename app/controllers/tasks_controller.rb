@@ -3,10 +3,10 @@ class TasksController < ApplicationController
   def index
     tasks = Task.search(params[:search])
     if params[:sort] == 'due_time'
-        @tasks = tasks.order('due_time ASC NULLS LAST')
-      else
-        @tasks = tasks.order(created_at: 'DESC')
-      end
+      @tasks = tasks.order('due_time ASC NULLS LAST')
+    else
+      @tasks = tasks.order(created_at: 'DESC')
+    end
   end
 
   def show

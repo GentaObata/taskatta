@@ -21,7 +21,7 @@ RSpec.describe Task, type: :model do
     end
     it '検索ワードにマッチしたステータスのタスクが返されること' do
       search_result = Task.search('done')
-      expect(search_result.first.title).to eq @task3.title
+      expect(search_result.last.title).to eq @task3.title
     end
   end
 end
