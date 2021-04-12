@@ -1,5 +1,6 @@
-<li>
-  <p class="task_title"><%= link_to task.title, task%></p>
-  <p class="task_body"><%= task.body%></p>
-  <p>終了期日：<%= task.due_time ? task.due_time.strftime('%Y/%m/%d %H:%M') : 'なし'%></p>
-</li>
+<tr>
+  <td scope="col"><%= link_to task.title, task%></td>
+  <td scope="col"><%= task.body%></td>
+  <td scope="col"><%= task.due_time ? task.due_time.strftime('%Y/%m/%d %H:%M') : 'なし'%></td>
+  <td scope="col"><%= task.task_statuses_id%></td>
+</tr>
