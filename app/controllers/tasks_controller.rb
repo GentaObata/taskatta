@@ -1,9 +1,9 @@
 class TasksController < ApplicationController
 
   def index
-    tasks = Task.joins(:task_status)
+    tasks = Task.search(params[:search]).joins(:task_status)
     if params[:sort] == 'due_time'
-        @tasks = tasks.order('due_time DESC NULLS LAST')
+        @tasks = tasks.order('due_time ASC NULLS LAST')
       else
         @tasks = tasks.order(created_at: 'DESC')
       end

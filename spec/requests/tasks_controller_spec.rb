@@ -15,7 +15,7 @@ RSpec.describe "TasksControllers", type: :request do
   end
 
   describe '新規タスクを登録したとき' do
-    let(:params) { { task: {title: title, body: 'task body'} } }
+    let(:params) { { task: {title: title, body: 'task body', task_statuses_id: 10} } }
     subject { post tasks_path, params: params }
     context 'タイトルが空の場合' do
       let(:title) { nil }
@@ -40,7 +40,7 @@ RSpec.describe "TasksControllers", type: :request do
     before do
       @task = FactoryBot.create :task
     end
-    let(:params) { { task: {title: 'task title', body: 'task body'} } }
+    let(:params) { { task: {title: 'task title', body: 'task body', task_statuses_id: 10} } }
     it '変更内容が反映されること' do
       patch task_path(@task), params: params
       # patch :update, params: { id: @task.id, task: {title: 'task title', body: 'task body'} }
