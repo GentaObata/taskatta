@@ -10,7 +10,7 @@ RSpec.describe "TasksControllers", type: :request do
       expect(response.status).to eq 200
     end
     it 'レスポンスにタスクが含まれていること' do
-      expect(response.body).to include "puipui"
+      expect(response.body).to include "pui~"
     end
   end
 
