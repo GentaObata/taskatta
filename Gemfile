@@ -22,6 +22,10 @@ gem 'jbuilder', '~> 2.7'
 gem 'pg'
 gem 'bootstrap-sass'
 gem 'rails-i18n'
+gem 'jquery-rails'
+gem 'bootstrap'
+gem 'uglifier'
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

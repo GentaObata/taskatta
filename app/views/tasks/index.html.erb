@@ -1,7 +1,36 @@
 <% provide(:title, 'タスク一覧') %>
 <h1>タスク一覧</h1>
+<select id="sort" class="form-select">
+  <option value="">作成日順</option>
+  <option value="due_time">終了期日順</option>
+</select>
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  <a class="dropdown-item" href="#">Action</a>
+  <a class="dropdown-item" href="#">Another action</a>
+  <a class="dropdown-item" href="#">Something else here</a>
+</div>
 <%= link_to "新規タスク", new_task_path, method: :get, class: "btn btn-primary" %>
 
 <ul class="tasks">
   <%= render @tasks%>
 </ul>
+
+<script>
+  $(function() {
+    $("select#sort").val(getParam('sort'))
+
+    $('select#sort').change(function() {
+      window.location.href = '/?sort=' + $(this).val()
+    })
+  })
+
+  function getParam(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+</script>

@@ -1,17 +1,22 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      <%= render 'shared/error_messages' %>
+  <%= render 'shared/error_messages' %>
 
-      <%= form_with(model: @task, local: true) do |f| %>
-        <%= f.label :title %>
-        <%= f.text_field :title, class: 'form-controll' %>
-
-        <%= f.label :body %>
-        <%= f.text_area :body, class: 'form-controll'  %>
-
-        <%= f.submit yield(:button_text), class: "btn btn-primary" %>
-      <% end %>
+  <%= form_with(model: @task, local: true) do |f| %>
+    <div class="form-group">
+      <%= f.label :title, class: 'form_control' %>
+      <%= f.text_field :title, class: 'form-controll' %>
     </div>
+
+    <div class="form-group">
+      <%= f.label :body, class: 'form_control' %>
+      <%= f.text_area :body, class: 'form-controll'  %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :due_time, class: 'form_control' %>
+      <%= f.datetime_field :due_time, class: 'form_control' %>
+    </div>
+
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  <% end %>
   </div>
-</div>
