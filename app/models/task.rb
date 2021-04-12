@@ -4,6 +4,8 @@ class Task < ApplicationRecord
 
   def Task.search(word)
     return Task.all unless word
-    Task.where('title LIKE ?', "%#{word}%")
+    Task.joins(:task_status)
+      .where('title LIKE ?', "%#{word}%")
+      .or(where('task_statuses.name = ?', "#{word}"))
   end
 end
