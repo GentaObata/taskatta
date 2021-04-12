@@ -8,6 +8,7 @@ RSpec.describe Task, type: :system do
   describe 'タスク一覧画面を表示した時' do
     before do
       visit tasks_path
+      expect(page.text.index(@task2.title)).to be< page.text.index(@task1.title)
     end
     # it '作成日の降順でタスクがならんでいること' do
     #   expect(page.text).to match %r{#{@task2.title}.*#{@task1.title}}
