@@ -1,11 +1,11 @@
 class TasksController < ApplicationController
 
   def index
-    @tasks = Task.joins(:task_status)
+    tasks = Task.joins(:task_status)
     if params[:sort] == 'due_time'
-        @tasks.order('due_time DESC NULLS LAST')
+        @tasks = tasks.order('due_time DESC NULLS LAST')
       else
-        @tasks.order(created_at: 'DESC')
+        @tasks = tasks.order(created_at: 'DESC')
       end
   end
 
@@ -53,6 +53,6 @@ class TasksController < ApplicationController
 
   private
     def task_params
-      params.require(:task).permit(:title, :body, :due_time)
+      params.require(:task).permit(:title, :body, :due_time, :task_statuses_id)
     end
 end

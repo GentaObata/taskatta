@@ -5,5 +5,6 @@ ja:
         title: タスク名
         body: タスク内容
         due_time: 終了期日
+        task_status: ステータス
         created_at: 作成日
         updated_at: 更新日
