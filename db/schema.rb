@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 2021_04_12_075149) do
     t.datetime "due_time"
     t.bigint "task_statuses_id"
     t.index ["task_statuses_id"], name: "index_tasks_on_task_statuses_id"
-    t.index ["title"], name: "index_tasks_on_title"
   end
 
   add_foreign_key "tasks", "task_statuses", column: "task_statuses_id"
