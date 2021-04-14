@@ -9,7 +9,7 @@ RSpec.describe Task, type: :model do
     before do
       @task1 = create :task, title: 'hoge検索ワードhoge'
       @task2 = create :task, title: 'hogehoge'
-      @task3 = create :task, title: 'done_task', task_statuses_id: '30'
+      @task3 = create :task, title: 'done_task', status: 30
     end
     it '検索ワードにが空なら全ての結果が返されること' do
       search_result = Task.search('')
