@@ -4,8 +4,10 @@
 <select id="sort" name='sort', class="form-select">
   <option value="">作成日順</option>
   <option value="due_time">終了期日順</option>
+  <option value="priority">優先度順</option>
 </select>
 <%= form_tag(tasks_path,:method => 'get') do %>
+  <input type="hidden" name="sort", value= <%= params[:sort] %>>
   <%= text_field_tag :search %>
   <%= submit_tag '検索', :name => nil %>
 <% end %>
@@ -17,6 +19,7 @@
       <th scope="col">タスク内容</th>
       <th scope="col">終了期日</th>
       <th scope="col">ステータス</th>
+      <th scope="col">優先度</th>
     </tr>
   </thead>
   <tbody>
@@ -30,7 +33,11 @@
     $("input#search").val(getParam('search'))
 
     $('select#sort').change(function() {
-      window.location.href = '/?sort=' + $(this).val()
+      params = '/?sort=' + $(this).val()
+      if (getParam('search')) {
+        params += '&search=' + getParam('search')
+      }
+      window.location.href = params
     })
   })
 

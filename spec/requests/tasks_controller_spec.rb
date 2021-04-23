@@ -15,7 +15,7 @@ RSpec.describe "TasksControllers", type: :request do
   end
 
   describe '新規タスクを登録したとき' do
-    let(:params) { { task: {title: title, body: 'task body', task_statuses_id: 10} } }
+    let(:params) { { task: {title: title, body: 'task body', status: 'doing', priority: 'high'} } }
     subject { post tasks_path, params: params }
     context 'タイトルが空の場合' do
       let(:title) { nil }
